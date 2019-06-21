@@ -6,7 +6,19 @@ namespace Hitss.Lessons
 {
 	internal static class Lesson01
 	{
-		private static void Example1()
+		private static void Main()
+		{
+			//var x = 0;
+			//Action a1 = () => PrintHello(x);
+			//a1();
+
+			Ejemplo1();
+			Ejemplo2();
+			Ejemplo3();
+			Ejemplo4();
+		}
+
+		private static void Ejemplo1()
 		{
 			for (int i = 0; i < 10; i++)
 			{
@@ -14,7 +26,7 @@ namespace Hitss.Lessons
 			}
 		}
 
-		private static void Example2()
+		private static void Ejemplo2()
 		{
 			var actions = new List<Action>();
 
@@ -26,7 +38,7 @@ namespace Hitss.Lessons
 			Run(actions);
 		}
 
-		private static void Example3()
+		private static void Ejemplo3()
 		{
 			var actions = new List<Action>();
 
@@ -39,7 +51,7 @@ namespace Hitss.Lessons
 			Run(actions);
 		}
 
-		private static void Example4()
+		private static void Ejemplo4()
 		{
 			var actions = new List<Action>();
 
@@ -51,17 +63,6 @@ namespace Hitss.Lessons
 			Run(actions);
 		}
 
-		private static void Main()
-		{
-			//var x = 0;
-			//Action a1 = () => PrintHello(x);
-			//a1();
-
-			Example1();
-			//Example2();
-			//Example3();
-			//Example4();
-		}
 		private static void PrintHello(int i)
 		{
 			Console.WriteLine($"Hello World, {i}");
@@ -84,7 +85,7 @@ namespace Hitss.Lessons
 				Console.WriteLine(name);
 			}
 
-			//  This will prevent using the variables from the containing method in the local function 
+			//  This will prevent using the variables from the containing method in the local function
 			//static void error()
 			//{
 			//	Console.WriteLine(name);

@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hitss.Lessons", "Hitss.Lessons.csproj", "{272EB6BB-3A90-46F1-B988-0A0F6AB67F66}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4D481657-07D7-411A-BC8E-EB913178B1E8}"
+	ProjectSection(SolutionItems) = preProject
+		Extras.fsx = Extras.fsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +23,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{272EB6BB-3A90-46F1-B988-0A0F6AB67F66} = {4D481657-07D7-411A-BC8E-EB913178B1E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B18D2FA-BA1F-4BFD-A4D2-DB93F04A3B26}
