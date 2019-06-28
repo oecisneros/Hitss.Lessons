@@ -6,16 +6,22 @@ namespace Hitss.Lessons
 {
 	internal static class Lesson01
 	{
+		private sealed class Closure
+		{
+			public int Counter { get; set; }
+		}
+
 		private static void Main()
 		{
-			//var x = 0;
-			//Action a1 = () => PrintHello(x);
-			//a1();
-
 			Ejemplo1();
-			Ejemplo2();
-			Ejemplo3();
-			Ejemplo4();
+
+			//Ejemplo2();
+			//Ejemplo2_1();
+
+			//Ejemplo3();
+			//Ejemplo3_1();
+
+			//Ejemplo4();
 		}
 
 		private static void Ejemplo1()
@@ -38,6 +44,19 @@ namespace Hitss.Lessons
 			Run(actions);
 		}
 
+		private static void Ejemplo2_1()
+		{
+			var actions = new List<Action>();
+
+			var closure = new Closure();
+			for (closure.Counter = 0; closure.Counter < 10; closure.Counter++)
+			{
+				actions.Add(() => PrintHello(closure.Counter));
+			}
+
+			Run(actions);
+		}
+
 		private static void Ejemplo3()
 		{
 			var actions = new List<Action>();
@@ -45,7 +64,22 @@ namespace Hitss.Lessons
 			for (int i = 0; i < 10; i++)
 			{
 				var count = i;
-				actions.Add(() => PrintHello(i));
+				actions.Add(() => PrintHello(count));
+			}
+
+			Run(actions);
+		}
+
+		private static void Ejemplo3_1()
+		{
+			var actions = new List<Action>();
+
+			for (int i = 0; i < 10; i++)
+			{
+				var closure = new Closure();
+				closure.Counter = i;
+
+				actions.Add(() => PrintHello(closure.Counter));
 			}
 
 			Run(actions);
@@ -78,7 +112,7 @@ namespace Hitss.Lessons
 
 		private static void Test()
 		{
-			var name = "Kurama";
+			var name = "Hitss";
 
 			void print()
 			{
