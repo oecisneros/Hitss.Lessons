@@ -4,19 +4,9 @@ using System.Threading;
 
 namespace Hitss.Lessons
 {
-	// https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci
 	internal static class Lesson03
 	{
-		// https://es.wikipedia.org/wiki/Factorial
-		private static int Factorial(int x)
-		{
-			return x switch
-			{
-				0 => 1,
-				_ => Factorial(x - 1) * x
-			};
-		}
-
+		// https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci
 		private static int Fibonacci(int x)
 		{
 			// This code has two problems...
@@ -29,7 +19,17 @@ namespace Hitss.Lessons
 			};
 		}
 
-		private static int Fibonacci2(int x)
+		// https://es.wikipedia.org/wiki/Factorial
+		private static int Factorial(int x)
+		{
+			return x switch
+			{
+				0 => 1,
+				_ => Factorial(x - 1) * x
+			};
+		}
+
+		private static int SlowFibonacci(int x)
 		{
 			Thread.Sleep(300);
 			return Fibonacci(x);
@@ -37,10 +37,10 @@ namespace Hitss.Lessons
 
 		private static void Main()
 		{
-			//Ejemplo1();
+			Ejemplo1();
 			//Ejemplo2();
 			//Ejemplo3();
-			Ejemplo4();
+			//Ejemplo4();
 		}
 
 		#region Ejemplo1
@@ -60,7 +60,7 @@ namespace Hitss.Lessons
 
 			for (int i = 0; i < 10; i++)
 			{
-				Console.WriteLine(Fibonacci2(12));
+				Console.WriteLine(SlowFibonacci(12));
 			}
 		}
 
@@ -72,10 +72,10 @@ namespace Hitss.Lessons
 		{
 			Console.WriteLine("Fibonacci with cache");
 
-			var fibonacciCache = Memoize(Fibonacci2);
+			var fastFibonacci = Memoize(SlowFibonacci);
 			for (int i = 0; i < 10; i++)
 			{
-				Console.WriteLine(fibonacciCache(12));
+				Console.WriteLine(fastFibonacci(12));
 			}
 		}
 
@@ -83,14 +83,56 @@ namespace Hitss.Lessons
 
 		#region Ejemplo4
 
+		// https://en.wikipedia.org/wiki/Decorator_pattern
+		private interface IFactorialGenerator
+		{
+			int Generate(int x);
+		}
+
+		private class SlowFactorialGenerator :
+			IFactorialGenerator
+		{
+			public int Generate(int x)
+			{
+				Thread.Sleep(300);
+				return Factorial(x);
+			}
+		}
+
+		private class FastFactorialDecorator :
+			IFactorialGenerator
+		{
+			private IFactorialGenerator _generator;
+			private readonly ConcurrentDictionary<int, int> _cache;
+
+			public FastFactorialDecorator(IFactorialGenerator generator)
+			{
+				_generator = generator;
+				_cache = new ConcurrentDictionary<int, int>();
+			}
+
+			public int Generate(int x)
+			{
+				return _cache.GetOrAdd(x, _generator.Generate);
+			}
+		}
+
 		private static void Ejemplo4()
 		{
-			Console.WriteLine("Factorial with cache");
+			Console.WriteLine("Factorial without cache");
 
-			var factorialCache = Memoize(Factorial);
+			var slowFactorial = new SlowFactorialGenerator();
 			for (int i = 0; i < 10; i++)
 			{
-				Console.WriteLine(factorialCache(5));
+				Console.WriteLine(slowFactorial.Generate(5));
+			}
+
+			Console.WriteLine("Factorial with cache");
+
+			IFactorialGenerator fastFactorial = new FastFactorialDecorator(slowFactorial);
+			for (int i = 0; i < 10; i++)
+			{
+				Console.WriteLine(fastFactorial.Generate(5));
 			}
 		}
 

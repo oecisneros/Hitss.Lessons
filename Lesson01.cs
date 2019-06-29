@@ -14,15 +14,14 @@ namespace Hitss.Lessons
 		private static void Main()
 		{
 			Ejemplo1();
-
 			//Ejemplo2();
 			//Ejemplo2_1();
-
 			//Ejemplo3();
 			//Ejemplo3_1();
-
 			//Ejemplo4();
 		}
+
+		#region Ejemplo1
 
 		private static void Ejemplo1()
 		{
@@ -31,6 +30,10 @@ namespace Hitss.Lessons
 				PrintHello(i);
 			}
 		}
+
+		#endregion Ejemplo1
+
+		#region Ejemplo2
 
 		private static void Ejemplo2()
 		{
@@ -56,6 +59,10 @@ namespace Hitss.Lessons
 
 			Run(actions);
 		}
+
+		#endregion Ejemplo2
+
+		#region Ejemplo3
 
 		private static void Ejemplo3()
 		{
@@ -85,6 +92,10 @@ namespace Hitss.Lessons
 			Run(actions);
 		}
 
+		#endregion Ejemplo3
+
+		#region Ejemplo4
+
 		private static void Ejemplo4()
 		{
 			var actions = new List<Action>();
@@ -96,6 +107,8 @@ namespace Hitss.Lessons
 
 			Run(actions);
 		}
+
+		#endregion Ejemplo4
 
 		private static void PrintHello(int i)
 		{
