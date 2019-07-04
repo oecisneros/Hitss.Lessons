@@ -79,10 +79,25 @@ namespace Hitss.Lessons
 			}
 		}
 
+		// https://en.wikipedia.org/wiki/Memoization
+		// Is an optimization technique used primarily to speed up computer programs
+		// by storing the results of expensive function calls and returning the cached result
+		// when the same inputs occur again
+		private static Func<int, int> Memoize(Func<int, int> factory)
+		{
+			var cache = new ConcurrentDictionary<int, int>();
+
+			return (int key) =>
+			{
+				return cache.GetOrAdd(key, factory);
+			};
+		}
+
 		#endregion Ejemplo3
 
 		#region Ejemplo4
 
+		// https://en.wikipedia.org/wiki/Matryoshka_doll
 		// https://en.wikipedia.org/wiki/Decorator_pattern
 		private interface IFactorialGenerator
 		{
@@ -137,19 +152,5 @@ namespace Hitss.Lessons
 		}
 
 		#endregion Ejemplo4
-
-		// https://en.wikipedia.org/wiki/Memoization
-		// Is an optimization technique used primarily to speed up computer programs
-		// by storing the results of expensive function calls and returning the cached result
-		// when the same inputs occur again
-		private static Func<int, int> Memoize(Func<int, int> factory)
-		{
-			var cache = new ConcurrentDictionary<int, int>();
-
-			return (int key) =>
-			{
-				return cache.GetOrAdd(key, factory);
-			};
-		}
 	}
 }
