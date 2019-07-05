@@ -132,6 +132,26 @@ namespace Hitss.Lessons
 			}
 		}
 
+		//private class SecurityFactorialDecorator :
+		//	IFactorialGenerator
+		//{
+		//	private IFactorialGenerator _generator;
+
+		//	public SecurityFactorialDecorator(IFactorialGenerator generator)
+		//	{
+		//		_generator = generator;
+		//	}
+
+		//	public int Generate(int x)
+		//	{
+		//		if (Administrador)
+		//		{
+		//			return _generator.Generate(x);
+		//		}
+		//		throw new System.Exception();
+		//	}
+		//}
+
 		private static void Ejemplo4()
 		{
 			Console.WriteLine("Factorial without cache");
