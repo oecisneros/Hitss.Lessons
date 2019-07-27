@@ -69,7 +69,7 @@ namespace Hitss.Lessons
 
 		#region Ejemplo4
 
-		private static IEnumerable<string> GetPokemonData()
+		private static IEnumerable<string> ObtenerDatosPokemon()
 		{
 			return File
 				.ReadLines(pokeArchivo)
@@ -78,7 +78,7 @@ namespace Hitss.Lessons
 
 		private static void Ejemplo4()
 		{
-			var pokemons = GetPokemonData();
+			var pokemons = ObtenerDatosPokemon();
 			pokemons.ForEach(Print);
 		}
 
@@ -88,23 +88,23 @@ namespace Hitss.Lessons
 
 		private static void Ejercicios()
 		{
-			var pokemons = GetPokemonData();
+			var pokemones = ObtenerDatosPokemon();
 
 			// Desplegar el nombre de todos los pokémones
-			pokemons
+			pokemones
 				//.Select(split)
 				//.Select(obtener nombre)
 				.ForEach(Print);
 
 			// Desplegar el nombre de todos los pokémones fuego
-			pokemons
+			pokemones
 				//.Select(split)
 				//.Where(es tipo fuego)
 				//.Select(obtener nombre)
 				.ForEach(Print);
 
 			// Total de pokémones fuego
-			pokemons
+			pokemones
 				//.Select(split)
 				//.Where(es tipo fuego)
 				//.Count()

@@ -5,7 +5,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>Hitss.Lessons</RootNamespace>
     <LangVersion>8.0</LangVersion>
-    <StartupObject>Hitss.Lessons.Lesson05</StartupObject>
+    <StartupObject>Hitss.Lessons.Lesson06</StartupObject>
   </PropertyGroup>
 
 </Project>
