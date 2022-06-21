@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Hitss.Lessons
+﻿namespace Hitss.Lessons
 {
 	// Encapsulation
 	// a) Information hiding
@@ -9,11 +6,11 @@ namespace Hitss.Lessons
 	// c) Protects from unnecessary changes (black box)
 	internal static class Lesson02
 	{
-		private class Pedido
+		private sealed class Pedido
 		{
 			public int Tipo { get; set; }
 
-			public string Descripcion { get; set; }
+			public string Descripcion { get; set; } = string.Empty;
 
 			public decimal Importe { get; set; }
 		}
@@ -219,6 +216,7 @@ namespace Hitss.Lessons
 			};
 
 			Console.WriteLine(instancia1(pedido) == instancia2(pedido));
+			Console.WriteLine(instancia2(pedido) == instancia3(pedido));
 		}
 
 		#endregion Ejemplo4

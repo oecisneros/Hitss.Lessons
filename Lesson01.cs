@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Hitss.Lessons
+﻿namespace Hitss.Lessons
 {
 	internal static class Lesson01
 	{
@@ -19,6 +15,7 @@ namespace Hitss.Lessons
 			//Ejemplo3();
 			//Ejemplo3_1();
 			//Ejemplo4();
+			//Test();
 		}
 
 		#region Ejemplo1
@@ -83,8 +80,10 @@ namespace Hitss.Lessons
 
 			for (int i = 0; i < 10; i++)
 			{
-				var closure = new Closure();
-				closure.Counter = i;
+				var closure = new Closure
+				{
+					Counter = i
+				};
 
 				actions.Add(() => PrintHello(closure.Counter));
 			}

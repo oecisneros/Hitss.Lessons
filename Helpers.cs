@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Hitss.Lessons
+﻿namespace Hitss.Lessons
 {
 	internal static class Helpers
 	{
-		public static void Print<T>(T source)
+		public static void Print<T>(T? source)
 		{
-			Console.WriteLine(source.ToString());
+			Console.WriteLine(source?.ToString());
 		}
 
 		public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)

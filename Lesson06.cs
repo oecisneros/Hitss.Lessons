@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
-
-namespace Hitss.Lessons
+﻿namespace Hitss.Lessons
 {
 	internal static class Lesson06
 	{
@@ -46,13 +40,11 @@ namespace Hitss.Lessons
 			IEnumerable<int> enumerable = ObtenerNumeros();
 
 			// https://en.wikipedia.org/wiki/Iterator
-			using (IEnumerator<int> enumerator = enumerable.GetEnumerator())
+			using IEnumerator<int> enumerator = enumerable.GetEnumerator();
+			while (enumerator.MoveNext())
 			{
-				while (enumerator.MoveNext())
-				{
-					int i = enumerator.Current;
-					Console.WriteLine(i);
-				}
+				int i = enumerator.Current;
+				Console.WriteLine(i);
 			}
 		}
 

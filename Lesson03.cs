@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Threading;
+﻿using System.Collections.Concurrent;
 
 namespace Hitss.Lessons
 {
@@ -117,7 +115,7 @@ namespace Hitss.Lessons
 		private class FastFactorialDecorator :
 			IFactorialGenerator
 		{
-			private IFactorialGenerator _generator;
+			private readonly IFactorialGenerator _generator;
 			private readonly ConcurrentDictionary<int, int> _cache;
 
 			public FastFactorialDecorator(IFactorialGenerator generator)

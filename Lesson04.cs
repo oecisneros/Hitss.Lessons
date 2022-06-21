@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Hitss.Lessons
 {
@@ -33,7 +31,7 @@ namespace Hitss.Lessons
 
 		private static void Ejemplo1()
 		{
-			Operation instancia1 = new Operation(Add);
+			Operation instancia1 = new(Add);
 
 			Operation instancia2 = Add;
 
@@ -46,6 +44,8 @@ namespace Hitss.Lessons
 			Console.WriteLine(instancia2(2, 3));
 
 			Console.WriteLine(instancia3(2, 3));
+
+			Console.WriteLine(instancia3_1(2, 3));
 		}
 
 		#endregion Ejemplo1
@@ -55,13 +55,9 @@ namespace Hitss.Lessons
 		// Func is a delegate that points to a method that accepts one or more arguments and returns a value
 		private static void Ejemplo2()
 		{
-			var arr = new List<int>(); // objects
-			arr.Add(5);
-			//arr.Add("3");
-
 			// Operation == Func<int, int, int>
 
-			Func<int, int, int> instancia1 = new Func<int, int, int>(Add);
+			Func<int, int, int> instancia1 = new(Add);
 
 			Func<int, int, int> instancia2 = Add;
 
@@ -94,7 +90,7 @@ namespace Hitss.Lessons
 
 		#region Ejemplo3
 
-		public static string Map0(DateTime? dt, Func<DateTime, String> map)
+		public static string Map0(DateTime? dt, Func<DateTime, string> map)
 		{
 			if (dt.HasValue)
 			{
